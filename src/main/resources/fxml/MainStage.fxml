@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1124.0" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.caesar_84.dsi_docs_reg.view.controllers.MainController">
+    <children>
+        <BorderPane prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <SplitPane dividerPositions="0.6365914786967418" prefHeight="160.0" prefWidth="200.0"
+                           BorderPane.alignment="CENTER">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <children>
+                                <TableView fx:id="handedDocumentTable" nodeOrientation="LEFT_TO_RIGHT"
+                                           prefHeight="469.0" prefWidth="429.0" AnchorPane.bottomAnchor="0.0"
+                                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn fx:id="serialColumn" prefWidth="96.0" text="Serial"/>
+                                        <TableColumn fx:id="departmentColumn" prefWidth="104.0" text="Dep-to"/>
+                                        <TableColumn fx:id="nameColumn" minWidth="6.0" prefWidth="130.0"
+                                                     text="Entregó"/>
+                                        <TableColumn fx:id="handedDateColumn" prefWidth="151.0" text="Fecha entrega"/>
+                                        <TableColumn fx:id="isReturnedColumn" prefWidth="86.0" text="Devuelto"/>
+                                        <TableColumn fx:id="returnedDateColumn" prefWidth="130.0"
+                                                     text="Fecha devuelto"/>
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="469.0" prefWidth="299.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="14.0" text="DETALLES DEL DOCUMENTO"
+                                       AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </Label>
+                                <GridPane layoutX="8.0" layoutY="21.0" prefWidth="393.0" AnchorPane.bottomAnchor="212.0"
+                                          AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="5.0"
+                                          AnchorPane.topAnchor="30.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0"
+                                                           prefWidth="157.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0"
+                                                           prefWidth="197.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="34.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="38.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="91.0" minHeight="2.0" prefHeight="40.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="120.0" minHeight="7.0" prefHeight="42.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="39.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="43.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="68.0"
+                                                        vgrow="SOMETIMES"/>
+                                        <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="24.0"
+                                                        vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Serial"/>
+                                        <Label prefHeight="86.0" prefWidth="176.0" text="Descripción"
+                                               GridPane.rowIndex="6"/>
+                                        <Label text="Quién entregó" GridPane.rowIndex="2"/>
+                                        <Label text="Fecha de entrega" GridPane.rowIndex="3"/>
+                                        <Label text="Devuelto" GridPane.rowIndex="4"/>
+                                        <Label fx:id="serialLabel" text="Label" GridPane.columnIndex="1"/>
+                                        <Label fx:id="departmentLabel" text="Label" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+                                        <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+                                        <Label fx:id="handedDateLabel" text="Label" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="3"/>
+                                        <Label fx:id="isReturnedLabel" text="Label" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="4"/>
+                                        <Label fx:id="returnedDateLabel" text="Label" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="5"/>
+                                        <HBox GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                            <children>
+                                                <Button fx:id="addButton" defaultButton="true"
+                                                        onAction="#handleAddDocument" text="_Agregar"/>
+                                                <Button fx:id="returnButton" onAction="#handleReturnDocument"
+                                                        text="_Devolver"/>
+                                                <!--<Button fx:id="deleteButton" onAction="#handleDeleteDocument" text="_Eliminar" />-->
+                                            </children>
+                                        </HBox>
+                                        <Label text="Departamento" GridPane.rowIndex="1"/>
+                                        <Label text="Fecha de devolución" GridPane.rowIndex="5"/>
+                                        <Label fx:id="descriptionLabel" alignment="TOP_LEFT" contentDisplay="TOP"
+                                               prefHeight="85.0" prefWidth="250.0" text="Label" textAlignment="JUSTIFY"
+                                               wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </center>
+            <top>
+                <MenuBar BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Archivo">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Cerrar">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Ayuda">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="Sobre la aplicación">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="A" control="UP" meta="UP" shift="DOWN"
+                                                            shortcut="UP"/>
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>
