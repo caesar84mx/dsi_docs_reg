@@ -10,11 +10,14 @@ public enum Department {
     AIT ("AIT"),
     PLANIFICACION ("Planificación"),
     PROCURA ("Procura"),
-    LEGAL ("Legal");
+    LEGAL ("Legal"),
+    ASESOR_COMERCIAL ("Asesor Comercial"),
+    PRESIDENCIA ("Presidencia"),
+    GERENCIA_GENERAL ("Gerencia General");
 
     private final String name;
 
-    private Department(String s) {
+    Department(String s) {
         name = s;
     }
 
