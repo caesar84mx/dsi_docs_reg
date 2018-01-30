@@ -1,13 +1,11 @@
 package com.caesar_84.dsi_docs_reg.view.controllers;
 
+import com.caesar_84.dsi_docs_reg.Main;
 import com.caesar_84.dsi_docs_reg.domain.model.Department;
 import com.caesar_84.dsi_docs_reg.domain.model.ViewableHandedDocument;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -29,19 +27,33 @@ public class NewHandedDocumentDialogController {
     private DatePicker handedDatePicker;
 
     @FXML
-    private void handleOk(){
-        viewableHandedDocument.setSerial(serialTextField.getText().toUpperCase());
-        viewableHandedDocument.setDescription(descriptionTextArea.getText());
-        viewableHandedDocument.setDepartment(departmentChoiceBox.getValue());
-        viewableHandedDocument.setNameHanded(nameTextField.getText());
-        viewableHandedDocument.setHandedDate(handedDatePicker.getValue());
+    private void handleOk() {
+        if (!(serialTextField.getText().isEmpty() ||
+              descriptionTextArea.getText().isEmpty() ||
+              departmentChoiceBox.getValue() == null ||
+              nameTextField.getText().isEmpty())) {
+            viewableHandedDocument.setSerial(serialTextField.getText().toUpperCase());
+            viewableHandedDocument.setDescription(descriptionTextArea.getText());
+            viewableHandedDocument.setDepartment(departmentChoiceBox.getValue());
+            viewableHandedDocument.setNameHanded(nameTextField.getText());
+            viewableHandedDocument.setHandedDate(handedDatePicker.getValue());
 
-        okClicked = true;
-        dialogStage.close();
+            okClicked = true;
+            dialogStage.close();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+
+            alert.setTitle(Main.APP_NAME);
+            alert.setHeaderText("Campos vacíos");
+            alert.setContentText("Usted tiene uno de los campos vacíos, debe llenarlos todos");
+
+            alert.showAndWait();
+        }
+
     }
 
     @FXML
-    private void handleCancel(){
+    private void handleCancel() {
         dialogStage.close();
     }
 

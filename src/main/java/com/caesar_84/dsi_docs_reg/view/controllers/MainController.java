@@ -5,6 +5,7 @@ import com.caesar_84.dsi_docs_reg.domain.model.ViewableHandedDocument;
 import com.caesar_84.dsi_docs_reg.service.HandedDocumentService;
 import com.caesar_84.dsi_docs_reg.util.DateUtil;
 import com.caesar_84.dsi_docs_reg.util.exceptions.WrongRecordDateException;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -91,12 +92,13 @@ public class MainController {
     @FXML
     private void handleReturnDocument() {
         int selectedIndex = handedDocumentTable.getSelectionModel().getSelectedIndex();
-        ViewableHandedDocument handedDocument = service.get(handedDocumentTable.getSelectionModel().getSelectedItem().getId());
 
         if (selectedIndex >= 0) {
+            ViewableHandedDocument handedDocument = service.get(handedDocumentTable.getSelectionModel().getSelectedItem().getId());
+
             if (!handedDocument.isReturned()) {
                 Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-                confirmationDialog.setTitle("DSI: REGISTRO DE DOCUMENTOS");
+                confirmationDialog.setTitle(Main.APP_NAME);
                 confirmationDialog.setHeaderText("¿Devolver Documento?");
                 confirmationDialog.setContentText("¿Quiere devolver el documento?");
 
@@ -208,7 +210,7 @@ public class MainController {
     public void setMain(Main main) {
         this.main = main;
 
-        handedDocumentTable.setItems(service.getAll());
+        Platform.runLater(()-> handedDocumentTable.setItems(service.getAll()));
     }
 
     private void showAlertWindow(Alert.AlertType type, String header, String text) {
@@ -217,7 +219,7 @@ public class MainController {
         window.initOwner(main.getPrimaryStage());
         window.setResizable(true);
         window.getDialogPane().setPrefHeight(250);
-        window.setTitle("DSI: REGISTRO DE DOCUMENTOS");
+        window.setTitle(Main.APP_NAME);
         window.setHeaderText(header);
         window.setContentText(text);
 
